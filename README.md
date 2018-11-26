@@ -1,2 +1,2 @@
-# hardware-accounting
-Accounting and distribution of hardware
+# equipment-accounting
+Accounting and distribution of equipment on Spring Boot
