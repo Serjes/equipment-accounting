@@ -12,7 +12,7 @@ public class Device {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private long id;
 
     @Column(name = "model")
     private String model;
@@ -25,6 +25,9 @@ public class Device {
 
     @Column(name = "mounted")
     private Boolean mounted;
+
+    @Column(name = "instock")
+    private Boolean inStock;
 
     @ManyToOne
     @JoinColumn(name = "clocation_id")
@@ -40,6 +43,10 @@ public class Device {
 
     @Column(name = "comment")
     private String comment;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "discussion_id")
+    private Discussion discussion;
 
 
 }
