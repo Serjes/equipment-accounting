@@ -1,5 +1,6 @@
 package com.serjes.equiper.security;
 
+import com.serjes.equiper.domain.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -19,9 +20,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests().antMatchers("/").authenticated()
                 .and()
-                .authorizeRequests().antMatchers("/devices/**").hasRole("ADMIN")
+                .authorizeRequests().antMatchers("/devices/**")
+                .hasAnyRole(User.ROLE_ADMIN, User.ROLE_ENGINEER, User.ROLE_MANAGER, User.ROLE_FIN_RESP)
                 .and()
                 .formLogin()
+//                .httpBasic()
                 .and()
                 .logout().logoutUrl("/logout");
     }

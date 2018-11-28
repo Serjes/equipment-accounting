@@ -20,6 +20,5 @@ public class Discussion {
     private String remark;
 
     @OneToOne(mappedBy="discussion")
-//    private Set<Device> devices = new HashSet<>();
     private Device device;
 }

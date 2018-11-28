@@ -17,11 +17,12 @@ public class AdminCommands {
         this.userRepository = userRepository;
     }
 
-    @ShellMethod("Добавить пользователя: adduser name pas role" +
-            "\n    4 вида ролей: admin, manager, engineer, finresp")
+    @ShellMethod("Добаввление пользователя" +
+            "\n     adduser username --pas password --role manager" +
+            "\n     5 видов ролей: admin, manager, engineer, finresp, viewer")
     public void adduser(
             @ShellOption String name,
-            @ShellOption String password,
+            @ShellOption String pas,
             @ShellOption String role
     ) {
 
@@ -44,7 +45,7 @@ public class AdminCommands {
                 break;
         }
 
-        User user = new User(name, new BCryptPasswordEncoder().encode(password), userRole);
+        User user = new User(name, new BCryptPasswordEncoder().encode(pas), userRole);
         userRepository.save(user);
     }
 }
