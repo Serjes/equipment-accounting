@@ -2,26 +2,28 @@
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <style type="text/css">
-        body {
-            padding: 50px;
-        }
+    <!--<style type="text/css">-->
+    <!--body {-->
+    <!--padding: 50px;-->
+    <!--}-->
 
-        .table-books, .table-books td {
-            border: 1px solid lightgray;
-            padding: 5px;
-        }
+    <!--.table-books, .table-books td {-->
+    <!--border: 1px solid lightgray;-->
+    <!--padding: 5px;-->
+    <!--}-->
 
-        label {
-            display: inline-block;
-            width: 200px;
-        }
+    <!--label {-->
+    <!--display: inline-block;-->
+    <!--width: 200px;-->
+    <!--}-->
 
-        .row {
-            margin-top: 10px;
-        }
-    </style>
+    <!--.row {-->
+    <!--margin-top: 10px;-->
+    <!--}-->
+    <!--</style>-->
+    <style type="http://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></style>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <!--<script type="text/javascript" src="books.js"></script>-->
 </head>
 <body>
@@ -32,33 +34,62 @@
 <p>
 <div id="editTable"></div>
 </p>
-<div id="bookTable"></div>
-<form id="adding-form" action="/books.html">
-    <h3>Добавить устройство:</h3>
+<!--<div id="bookTable"></div>-->
+<!--<form id="adding-form" action="/books.html">-->
+<!--<h3>Добавить устройство:</h3>-->
 
-    <div class="row">
-        <label for="bookTitle-input">Название:</label>
-        <input id="bookTitle-input" type="text"/>
-    </div>
+<!--<div class="row">-->
+<!--<label for="bookTitle-input">Название:</label>-->
+<!--<input id="bookTitle-input" type="text"/>-->
+<!--</div>-->
 
-    <div class="row">
-        <label for="authorName">Модель:</label>
-        <input id="authorName" type="text"/>
-    </div>
+<!--<div class="row">-->
+<!--<label for="authorName">Модель:</label>-->
+<!--<input id="authorName" type="text"/>-->
+<!--</div>-->
 
-    <div class="row">
-        <label for="authorLastName">Серийный номер:</label>
-        <input id="authorLastName" type="text"/>
-    </div>
+<!--<div class="row">-->
+<!--<label for="authorLastName">Серийный номер:</label>-->
+<!--<input id="authorLastName" type="text"/>-->
+<!--</div>-->
 
-    <div class="row">
-        <label for="genre">Инвентарный номер:</label>
-        <input id="genre" type="text"/>
-    </div>
+<!--<div class="row">-->
+<!--<label for="genre">Инвентарный номер:</label>-->
+<!--<input id="genre" type="text"/>-->
+<!--</div>-->
 
-    <div class="row">
-        <button type="submit">Сохранить</button>
-    </div>
-</form>
+<!--<div class="row">-->
+<!--<button type="submit">Сохранить</button>-->
+<!--</div>-->
+<!--</form>-->
+<table id="table_id" class="display">
+</table>
+
 </body>
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable({
+
+            ajax: {
+                url: "api/devices",
+                type: "GET"
+            },
+            columns: [
+                {"data" : "id"},
+                {"data" : "name"},
+                {"data" : "model"},
+                {"data" : "description"},
+                {"data" : "serialNumber"},
+                {"data" : "inventoryNumber"},
+                {"data" : "contract"},
+                {"data" : "inStock"},
+                {"data" : "currentLocation"},
+                {"data" : "plannedLocation"},
+                {"data" : "mounted"},
+                {"data" : "comment"},
+                {"data" : "discussion"}
+            ]
+        });
+    });
+</script>
 </html>

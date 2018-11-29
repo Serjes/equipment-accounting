@@ -14,8 +14,14 @@ public class Device {
     @Column(name = "id", nullable = false)
     private long id;
 
+    @Column(name = "name")
+    private String name;
+
     @Column(name = "model")
     private String model;
+
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "snumber")
     private String serialNumber;

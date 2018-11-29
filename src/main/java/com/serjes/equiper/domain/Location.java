@@ -16,6 +16,9 @@ public class Location {
     @Column(name="id", nullable = false)
     private long id;
 
+    @Column(name="city")
+    private String city;
+
     @Column(name="address")
     private String address;
 
