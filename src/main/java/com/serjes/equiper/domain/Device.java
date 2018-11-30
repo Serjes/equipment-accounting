@@ -3,6 +3,7 @@ package com.serjes.equiper.domain;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @Entity
@@ -50,9 +51,9 @@ public class Device {
     @Column(name = "comment")
     private String comment;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "discussion_id")
-    private Discussion discussion;
+    private Set<Remark> discussion;
 
 
 }

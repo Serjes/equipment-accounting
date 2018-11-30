@@ -21,9 +21,8 @@
     <!--margin-top: 10px;-->
     <!--}-->
     <!--</style>-->
-    <style type="http://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></style>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></link>
+
     <!--<script type="text/javascript" src="books.js"></script>-->
 </head>
 <body>
@@ -63,16 +62,46 @@
 <!--</div>-->
 <!--</form>-->
 <table id="table_id" class="display">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Название</th>
+        <th>Модель</th>
+        <th>Описание</th>
+        <th>s\n</th>
+        <th>i\n</th>
+        <th>Контракт</th>
+        <th>В наличии</th>
+        <th>Текущее местонахождение</th>
+        <th>Планируемое</th>
+        <th>Смонтировано</th>
+        <th>Комментарий</th>
+        <th>Обсуждение</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--<tr th:each="book : ${books}">-->
+        <!--<td width="30" th:text="${book.id}" th:id="book" >1</td>-->
+        <!--<td width="150 " th:text="${book.title}" >Foo</td>-->
+        <!--<td width="150 " th:text="${book.author.firstName}" >John</td>-->
+        <!--<td width="150" th:text="${book.author.lastName}" >Doe</td>-->
+        <!--<td width="100" th:text="${book.genre.name}" >fantasy</td>-->
+        <!--<td width="50"  ><a th:href="'javascript:editBook(' + ${book.id} + ');'" >Изменить</a></td>-->
+        <!--<td width="50"  ><a th:href="'javascript:deleteBook(' + ${book.id} + ');'">Х</a>-->
+        <!--</td>-->
+    <!--</tr>-->
+    </tbody>
 </table>
-
-</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script  type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script>
     $(document).ready(function () {
         $('#table_id').DataTable({
 
             ajax: {
-                url: "api/devices",
-                type: "GET"
+                url : "api/devices",
+                type : "GET",
+                dataSrc : ""
             },
             columns: [
                 {"data" : "id"},
@@ -81,15 +110,16 @@
                 {"data" : "description"},
                 {"data" : "serialNumber"},
                 {"data" : "inventoryNumber"},
-                {"data" : "contract"},
-                {"data" : "inStock"},
+                {"data" : "contractName"},
+                {"data" : "isInStock"},
                 {"data" : "currentLocation"},
                 {"data" : "plannedLocation"},
-                {"data" : "mounted"},
+                {"data" : "isMounted"},
                 {"data" : "comment"},
                 {"data" : "discussion"}
             ]
         });
     });
 </script>
+</body>
 </html>

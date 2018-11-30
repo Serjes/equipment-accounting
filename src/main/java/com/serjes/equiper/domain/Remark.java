@@ -9,16 +9,21 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "Discussions")
-public class Discussion {
+public class Remark {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private long id;
 
-    @Column(name="remark")
-    private String remark;
+    @Column(name="content")
+    private String content;
 
-    @OneToOne(mappedBy="discussion")
+    @ManyToOne
+    @JoinColumn(name = "device_id")
     private Device device;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }
