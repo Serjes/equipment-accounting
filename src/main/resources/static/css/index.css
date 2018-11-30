@@ -1,0 +1,26 @@
+.body {
+    background-color: rgb(241, 241, 241);
+}
+.navbar-brand {
+    font-size: 40px;
+}
+.card {
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background: rgba(156, 150, 150, 0.918);
+    border-radius: .1875rem;
+    border-color: black;
+    margin-bottom: 30px;
+    position: relative;
+    width: 100%;
+}
+.body1 {
+    background: #f3f3f3;
+}
+
+.body1 h2 {
+    text-align: center;
+}
