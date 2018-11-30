@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></link>
+</head>
+<body>
+<p>
+    <a th:href="@{/}" href="index.html">главное меню</a>
+</p>
+<h1>Таблица оборудования</h1>
+<p>
+<div id="editTable"></div>
+</p>
+<table id="table_id" class="display">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Название</th>
+        <th>Дата получения оборудования</th>
+        <!--<th>Список техники</th>-->
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script  type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable({
+
+            ajax: {
+                url : "api/contracts",
+                type : "GET",
+                dataSrc : ""
+            },
+            columns: [
+                {"data" : "id"},
+                {"data" : "name"},
+                {"data" : "receivingDate"}
+                // {"data" : "devices"}
+            ]
+        });
+    });
+</script>
+</body>
+</html>
