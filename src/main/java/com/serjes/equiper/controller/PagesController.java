@@ -25,11 +25,20 @@ public class PagesController {
     }
 
     @GetMapping("/devices-table")
-    public String devtablePage(HttpServletRequest request) {
+    public String devTablePage(HttpServletRequest request) {
         logger.info("DevicesTablePage");
         boolean authority = request.isUserInRole("FIN_RESP");
         if (authority){
             return "devices-table.html";
         }else return "devices-viewer.html";
+    }
+
+    @GetMapping("/contracts-table")
+    public String contrTablePage(HttpServletRequest request) {
+        logger.info("ContractsTablePage");
+        boolean authority = request.isUserInRole("FIN_RESP");
+        if (authority){
+            return "contracts-table.html";
+        }else return "contracts-viewer.html";
     }
 }

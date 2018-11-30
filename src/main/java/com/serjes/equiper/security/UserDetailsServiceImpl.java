@@ -1,5 +1,7 @@
 package com.serjes.equiper.security;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.serjes.equiper.domain.User;
 import com.serjes.equiper.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +14,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-
+    private static final String SECURITY_HYSTRIX_TIMEOUT = "2000";
 
     @Autowired
     private UserRepository userRepository;
 
     @Override
+    @HystrixCommand(commandKey = "loadUser", groupKey = "SecurityService",
+            commandProperties = {
+                    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",
+                            value = SECURITY_HYSTRIX_TIMEOUT)
+            }
+    )
     public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
 
         User user = userRepository.findByName(name);
@@ -33,12 +41,4 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return builder.build();
     }
 
-//    @PostConstruct
-//    public void init(){
-//        User user = new User();
-//        user.setName("user");
-//        user.setPassword(new BCryptPasswordEncoder().encode("123"));
-//        user.setRole("USER");
-//        userRepository.save(user);
-//    }
 }

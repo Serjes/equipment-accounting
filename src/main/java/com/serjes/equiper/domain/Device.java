@@ -1,6 +1,7 @@
 package com.serjes.equiper.domain;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -8,6 +9,7 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "Devices")
+@NoArgsConstructor
 public class Device {
 
     @Id
@@ -55,5 +57,19 @@ public class Device {
     @JoinColumn(name = "discussion_id")
     private Set<Remark> discussion;
 
-
+    public Device(String name, String model, String description, String serialNumber, String inventoryNumber,
+                  Boolean mounted, Boolean inStock, Location currentLocation, Location plannedLocation,
+                  Contract contract, String comment) {
+        this.name = name;
+        this.model = model;
+        this.description = description;
+        this.serialNumber = serialNumber;
+        this.inventoryNumber = inventoryNumber;
+        this.mounted = mounted;
+        this.inStock = inStock;
+        this.currentLocation = currentLocation;
+        this.plannedLocation = plannedLocation;
+        this.contract = contract;
+        this.comment = comment;
+    }
 }

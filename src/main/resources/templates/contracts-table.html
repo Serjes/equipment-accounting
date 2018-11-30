@@ -17,17 +17,8 @@
     <tr>
         <th>ID</th>
         <th>Название</th>
-        <th>Модель</th>
-        <th>Описание</th>
-        <th>s\n</th>
-        <th>i\n</th>
-        <th>Контракт</th>
-        <th>В наличии</th>
-        <th>Текущее местонахождение</th>
-        <th>Планируемое</th>
-        <th>Смонтировано</th>
-        <th>Комментарий</th>
-        <th>Обсуждение</th>
+        <th>Дата получения оборудования</th>
+        <!--<th>Список техники</th>-->
     </tr>
     </thead>
     <tbody>
@@ -40,24 +31,15 @@
         $('#table_id').DataTable({
 
             ajax: {
-                url : "api/devices",
+                url : "api/contracts",
                 type : "GET",
                 dataSrc : ""
             },
             columns: [
                 {"data" : "id"},
                 {"data" : "name"},
-                {"data" : "model"},
-                {"data" : "description"},
-                {"data" : "serialNumber"},
-                {"data" : "inventoryNumber"},
-                {"data" : "contractName"},
-                {"data" : "isInStock"},
-                {"data" : "currentLocation"},
-                {"data" : "plannedLocation"},
-                {"data" : "isMounted"},
-                {"data" : "comment"},
-                {"data" : "discussion"}
+                {"data" : "receivingDate"}
+                // {"data" : "devices"}
             ]
         });
     });

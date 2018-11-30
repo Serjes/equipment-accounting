@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-//@SuppressWarnings()
 public class DeviceDto {
 
     private long id;
@@ -43,7 +42,6 @@ public class DeviceDto {
 
     private String comment;
 
-//    private String remark;
     private Set<String> discussion;
 
     public static DeviceDto toDto(Device device) {
@@ -61,7 +59,6 @@ public class DeviceDto {
                 device.getMounted(),
                 device.getComment(),
                 device.getDiscussion().stream().map(Remark::getContent).collect(Collectors.toSet())
-//        Remark::getDevice).collect(Collectors.toSet())
         );
     }
 }
