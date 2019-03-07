@@ -1,0 +1,255 @@
+databaseChangeLog:
+- changeSet:
+    id: 1551881505005-1
+    author: root (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              primaryKey: true
+              primaryKeyName: contracts_pkey
+            name: id
+            type: BIGSERIAL
+        - column:
+            name: name
+            type: VARCHAR(255)
+        - column:
+            name: date
+            type: TIMESTAMP WITHOUT TIME ZONE
+        tableName: contracts
+- changeSet:
+    id: 1551881505005-2
+    author: root (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              primaryKey: true
+              primaryKeyName: devices_pkey
+            name: id
+            type: BIGSERIAL
+        - column:
+            name: comment
+            type: VARCHAR(255)
+        - column:
+            name: instock
+            type: BOOLEAN
+        - column:
+            name: inumber
+            type: VARCHAR(255)
+        - column:
+            name: model
+            type: VARCHAR(255)
+        - column:
+            name: mounted
+            type: BOOLEAN
+        - column:
+            name: snumber
+            type: VARCHAR(255)
+        - column:
+            name: contract_id
+            type: BIGINT
+        - column:
+            name: clocation_id
+            type: BIGINT
+        - column:
+            name: discussion_id
+            type: BIGINT
+        - column:
+            name: plocation_id
+            type: BIGINT
+        - column:
+            name: description
+            type: VARCHAR(255)
+        - column:
+            name: name
+            type: VARCHAR(255)
+        tableName: devices
+- changeSet:
+    id: 1551881505005-3
+    author: root (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              primaryKey: true
+              primaryKeyName: discussions_pkey
+            name: id
+            type: BIGSERIAL
+        - column:
+            name: remark
+            type: VARCHAR(255)
+        - column:
+            name: content
+            type: VARCHAR(255)
+        - column:
+            name: device_id
+            type: BIGINT
+        - column:
+            name: user_id
+            type: BIGINT
+        - column:
+            name: discussion_id
+            type: BIGINT
+        tableName: discussions
+- changeSet:
+    id: 1551881505005-4
+    author: root (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              primaryKey: true
+              primaryKeyName: locations_pkey
+            name: id
+            type: BIGSERIAL
+        - column:
+            name: address
+            type: VARCHAR(255)
+        - column:
+            name: rack
+            type: VARCHAR(255)
+        - column:
+            name: room
+            type: VARCHAR(255)
+        - column:
+            name: city
+            type: VARCHAR(255)
+        tableName: locations
+- changeSet:
+    id: 1551881505005-5
+    author: root (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              primaryKey: true
+              primaryKeyName: users_pkey
+            name: id
+            type: BIGSERIAL
+        - column:
+            name: name
+            type: VARCHAR(255)
+        - column:
+            name: password
+            type: VARCHAR(255)
+        - column:
+            name: role
+            type: VARCHAR(255)
+        tableName: users
+- changeSet:
+    id: 1551881505005-6
+    author: root (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: device_id
+        baseTableName: discussions
+        constraintName: fk23f0i8txhv6xdlulmsii679iu
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: devices
+        validate: true
+- changeSet:
+    id: 1551881505005-7
+    author: root (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: discussion_id
+        baseTableName: devices
+        constraintName: fk3idnoqkq5v8mhb6sh297w7ved
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: discussions
+        validate: true
+- changeSet:
+    id: 1551881505005-8
+    author: root (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: user_id
+        baseTableName: discussions
+        constraintName: fk9poj0fwjbqjit2n9dt6bhe5f7
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: users
+        validate: true
+- changeSet:
+    id: 1551881505005-9
+    author: root (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: plocation_id
+        baseTableName: devices
+        constraintName: fkd621urun2pli7d4daf2cxkmh6
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: locations
+        validate: true
+- changeSet:
+    id: 1551881505005-10
+    author: root (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: discussion_id
+        baseTableName: discussions
+        constraintName: fkertyoimfgthcrywx2d6jhtglw
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: devices
+        validate: true
+- changeSet:
+    id: 1551881505005-11
+    author: root (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: clocation_id
+        baseTableName: devices
+        constraintName: fkgwph53ituweppog8sy0c5gft0
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: locations
+        validate: true
+- changeSet:
+    id: 1551881505005-12
+    author: root (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: contract_id
+        baseTableName: devices
+        constraintName: fkpl3fxunys8mem5flev6rb6vn0
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: contracts
+        validate: true
+

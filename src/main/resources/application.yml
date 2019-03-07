@@ -18,9 +18,10 @@ spring:
           use_jdbc_metadata_defaults: false
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
 #  security:
 #    enabled: false
+#liquibase.change-log=classpath:db/liquibase-changelog.xml
 management:
   endpoints:
     web:
@@ -35,6 +36,8 @@ management:
     port: 8090
 logging:
   file: app.log
+  level:
+    liquibase: INFO
 info:
   app:
     name: @project.name@
